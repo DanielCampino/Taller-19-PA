@@ -27,7 +27,8 @@ test('Agregar usuario (positivo)', async ({ loggedPage, employee }) => {
   await loggedPage.locator('.oxd-select-text').nth(1).click();
   await loggedPage.locator('.oxd-select-dropdown >> text=Enabled').click()
 
-  await usernameInput.fill(employee);
+  const username = Date.now().toString().slice(-5);
+  await usernameInput.fill(username);
   await loggedPage.locator('input[type="password"]').first().fill('Pass123!');
   await loggedPage.locator('input[type="password"]').last().fill('Pass123!');
   await loggedPage.locator('button:has-text("Save")').click();
